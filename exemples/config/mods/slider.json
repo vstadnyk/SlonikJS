@@ -1,0 +1,10 @@
+{
+	"autoplay":{
+		"enable":true,
+		"speed":7000
+	},
+	"mask":".mask",
+	"items":".item",
+	"slogan":".slogan",
+	"links":".links"
+}

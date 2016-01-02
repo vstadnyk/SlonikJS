@@ -1,0 +1,16 @@
+{
+	"query":{
+		"region":"UK",
+		"language":"uk",
+		"sensor":false,
+		"v":3.4
+	},
+	"mapTypeId":"roadmap",
+	"address":false,
+	"zoom":15,
+	"zoomControl":true,
+	"scaleControl":false,
+	"scrollwheel":false,
+	"disableDefaultUI":true,
+	"disableDoubleClickZoom":false
+}

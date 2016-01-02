@@ -1,0 +1,64 @@
+events:{
+	adapt:{
+		table:function(e){
+			//this.width()==501?$(this).css():$(this).css()
+			e.textFit(510,16)
+		}
+	},
+	click:{
+		button:function(e){
+			$(this).siblings().trigger('change',$(this).text());
+		}
+	},
+	change:{
+		input:function(e,dir){
+			var v=this.value;
+			/\+/i.test(dir)?v++:v--;
+			this.value=v<0?v=0:v;
+			
+			e.data.index(this,'input',function(i){
+				e.data.elements.sum.eq(i).trigger('change',v)
+			})
+		},
+		sum:function(e,v){
+			e.data.index(this,'sum',function(i){
+				v=e.data.elements.price.eq(i).text()*v;
+				$(e.target).text(v);
+				e.data.elements.result.trigger('change')
+			})
+		},
+		result:function(e){
+			var result=0;
+			e.data.elements.sum.get().forEach(function(td){
+				parseInt($(td).text())?result=result+parseFloat($(td).text()):false
+			});
+			this.innerHTML=result;
+		}
+	}
+},
+index:function(e,name,fn){
+	for(var i in this.elements[name].get()){
+		this.elements[name].get()[i]==e?fn(i):false
+	}
+},
+init:function(e,option){
+	option.count.append(
+		$('<a/>',{'text':'–'})
+		.add(
+			$('<input>',{'type':'text','value':0})
+		)
+		.add(
+			$('<a/>',{'text':'+'})
+		)
+	);
+	this.elements.extend({
+		table:e.find('tbody'),
+		price:option.price,
+		count:option.count,
+		sum:option.sum,
+		result:option.result,
+		input:option.count.find('input'),
+		button:option.count.find('a')
+	},this);
+	return this;
+}

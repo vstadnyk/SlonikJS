@@ -1,0 +1,8 @@
+{
+	"lang":"ru",
+	"configDir":"/assets/slonik/config/",
+	"expansionsDir":"/assets/slonik/core/expansions/",
+	"langDir":"/assets/slonik/lang/",
+	"modsDir":"/assets/slonik/mods/",
+	"tmplDir":"/assets/slonik/tmpl/"
+}
